@@ -1,0 +1,41 @@
+.center {
+    text-align: center;
+}
+
+body {
+    /* background-image: url("thai-flag-open.jpg"); */
+    background-color: #00204A;
+}
+
+.card {
+    background-color: #EFFBFF;
+}
+
+.card {
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+    width: 80%;
+    height: 35rem;
+}
+
+.btn-text-right {
+    text-align: right;
+}
+
+.btns {
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}

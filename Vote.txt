@@ -1,0 +1,13 @@
+USER: project-vote2022
+PASSWORD: !)c2qtW5d$qJ@cR(JcW&
+
+DB_NAME : id19657126_db_vote
+DB_USER : id19657126_admin
+DB_PASS : 6>X*9Td7l|?0v?RC
+
+
+Host: sql6.freesqldatabase.com
+Database name: sql6523649
+Database user: sql6523649
+Database password: lI4P283a7F
+Port number: 3306
