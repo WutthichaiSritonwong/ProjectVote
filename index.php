@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>โปรแกรมเลือกตั้ง</title>
-    <link rel="stylesheet" href="dist\css\bootstrap.min.css" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css\bootstrap.min.css" />
+    <link rel="stylesheet" href="css\style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<div class="container center">
+    <div class="container center">
         <h1 style="color: #EFFBFF;">ฟอร์มกรอกข้อมูล</h1>
     </div>
     <div class="">
@@ -23,10 +25,10 @@
                         <label for="prefix" class="col-sm-2 col-form-label">คำนำหน้า</label>
                         <div class="col-sm-3">
                             <select name="prefix" class="form-control">
-                            <option selected >เลือก...</option>
-                            <option value='นาย'>นาย</option>
-                            <option value='นางสาว'>นางสาว</option>
-                            <option value='นาง'>นาง</option>    
+                                <option selected>เลือก...</option>
+                                <option value='นาย'>นาย</option>
+                                <option value='นางสาว'>นางสาว</option>
+                                <option value='นาง'>นาง</option>
                             </select>
                         </div>
                     </div>
@@ -44,13 +46,13 @@
                     <div class="form-group row">
                         <label for="idcard" class="col-sm-2 col-form-label">เลขบัตรประชาชน</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="idcard" name="idcard" placeholder=""/>
+                            <input type="text" class="form-control" id="idcard" name="idcard" placeholder="" />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="birthday" class="col-sm-2 col-form-label">วัน-เดือน-ปีเกิด</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="birthday" name="birthday" placeholder="00/00/0000"/>
+                            <input type="text" class="form-control" id="birthday" name="birthday" placeholder="00/00/0000" />
                         </div>
                     </div>
                     <!-- Start ที่อยู่ -->
@@ -132,6 +134,7 @@
                 </div>
                 <script>
                     document.getElementById("submitBtn").addEventListener("click", myFunction);
+
                     function myFunction() {
                         window.location = 'print.php';
                     }
@@ -140,5 +143,6 @@
         </div>
     </div>
 </body>
-<script src="dist\js\bootstrap.min.js"></script>
+<script src="js\bootstrap.min.js"></script>
+
 </html>
