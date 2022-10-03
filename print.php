@@ -19,13 +19,13 @@
 <div class="book">
     <div class="page">
         <?php
-        // $conn = mysqli_connect("localhost", "root", "", "db_vote");
+        $conn = mysqli_connect("localhost", "root", "", "db_vote");
         // $conn = mysqli_connect("sql6.freesqldatabase.com", "sql6523649", "lI4P283a7F", "sql6523649");
-        $conn = mysqli_connect("localhost", "id19657126_admin", "6>X*9Td7l|?0v?RC", "id19657126_db_vote");
+        // $conn = mysqli_connect("localhost", "id19657126_admin", "6>X*9Td7l|?0v?RC", "id19657126_db_vote");
         if($conn === false){
             die("ERROR: Could not connect. " . mysqli_connect_error());
         }
-        $sql = "SELECT * FROM id_card";
+        $sql = "SELECT * FROM data";
         if($result = mysqli_query($conn, $sql)){
             if(mysqli_num_rows($result) > 0){
                 echo "<h1 class='center'>รายชื่อแกนนำเขต...</h1>";
@@ -38,26 +38,28 @@
                         echo "<th scope='col'>เลขบัตรประชาชน</th>";
                         echo "<th scope='col'>วันเดือนปีเกิด</th>";
                         echo "<th scope='col'>ที่อยู่</th>";
-                        echo "<th scope='col'>ชุมชน</th>";
-                        echo "<th scope='col'>รหัสผู้ประสานงาน</th>";
-                        echo "<th scope='col'>ผู้ประสานงาน</th>";
                         echo "<th scope='col'>เบอร์โทร</th>";
+                        echo "<th scope='col'>ชุมชน/เขต</th>";
+                        echo "<th scope='col'>แกนนำ 1</th>";
+                        echo "<th scope='col'>แกนนำ 2</th>";
+                        echo "<th scope='col'>แกนนำ 3</th>";
                     echo "</tr>";
                 $counts = 0;
                 while($row = mysqli_fetch_array($result)){
                     $counts++;
                     echo "<tr class='landscape'>";
                     echo "<td>" . $counts . "</td>";
-                    echo "<td>" . $row['Prefix'] . "</td>";
-                    echo "<td>" . $row['Name'] . "</td>";
-                    echo "<td>" . $row['Surname'] . "</td>";
-                    echo "<td>" . $row['Idcard'] . "</td>";
-                    echo "<td>" . $row['Birthday'] . "</td>";
-                    echo "<td>" . $row['Adress'] . "</td>";
-                    echo "<td>" . $row['Community'] . "</td>";
-                    echo "<td>" . $row['Leader_ID'] . "</td>";
-                    echo "<td>" . $row['Vocal'] . "</td>";
-                    echo "<td>" . $row['NPhone'] . "</td>";
+                    echo "<td>" . $row['prefix'] . "</td>";
+                    echo "<td>" . $row['name'] . "</td>";
+                    echo "<td>" . $row['surname'] . "</td>";
+                    echo "<td>" . $row['idcard'] . "</td>";
+                    echo "<td>" . $row['birthday'] . "</td>";
+                    echo "<td>" ."บ้านเลขที่ ". $row['hNumber']."หมู่ ".$row['moo']."ต.".$row['parish']." อ.".$row['district']." จ.".$row['province']." ".$row['zip']. "</td>";
+                    echo "<td>" . $row['nPhone'] . "</td>";
+                    echo "<td>" . $row['community'] . "</td>";
+                    echo "<td>" . $row['vocal_name_1'] . "</td>";
+                    echo "<td>" . $row['vocal_name_2'] . "</td>";
+                    echo "<td>" . $row['vocal_name_3'] . "</td>";
                     echo "</tr>";
                 }
                 echo "</table>";

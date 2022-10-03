@@ -9,26 +9,59 @@
 </head>
 <body>
 <?php
-    // $conn = mysqli_connect("localhost", "root", "", "db_vote");
+    $conn = mysqli_connect("localhost", "root", "", "db_vote");
     // $conn = mysqli_connect("sql6.freesqldatabase.com", "sql6523649", "lI4P283a7F", "sql6523649");
-    $conn = mysqli_connect("localhost", "id19657126_admin", "6>X*9Td7l|?0v?RC", "id19657126_db_vote");
+    // $conn = mysqli_connect("localhost", "id19657126_admin", "6>X*9Td7l|?0v?RC", "id19657126_db_vote");
     if($conn === false){
         die("ERROR: Could not connect. "
             . mysqli_connect_error());
     }
+    // คำนำหน้า
     $prefix = $_REQUEST["prefix"];
+    // ชื่อ
     $name = $_REQUEST["name"];
+    // นามสกุล
     $surname = $_REQUEST["surname"];
+    // เลขบัตรประชาชน
     $idcard = $_REQUEST["idcard"];
+    // วัน/เดือน/ปีเกิด
     $birthday = $_REQUEST["birthday"];
-    $adress = $_REQUEST["adress"];
-    $community = $_REQUEST["community"];
-    $leader_id = $_REQUEST["leader_id"];
-    $vocal = $_REQUEST["vocal"];
+    //บ้านเลขที่
+    $hNumber = $_REQUEST["hNumber"];
+    // หมู่
+    $moo = $_REQUEST["moo"];
+    // ซอย
+    $alley = $_REQUEST["alley"];
+    // ถนน
+    $road = $_REQUEST["road"];
+    // ตำบล
+    $parish = $_REQUEST["parish"];
+    // อำเภอ
+    $district = $_REQUEST["district"];
+    // จังหวัด
+    $province = $_REQUEST["province"];
+    // รหัสไปรษณีย์
+    $zip = $_REQUEST["zip"];
+    // เบอร์โทร
     $nPhone = $_REQUEST["nPhone"];
+    // ชุมชน/เขต
+    $community = $_REQUEST["community"];
+    // รหัสแกนนำ 1
+    $vocal_id_1 = $_REQUEST["vocal_id_1"];
+    // ชื่อแกนนำ 1
+    $vocal_name_1 = $_REQUEST["vocal_name_1"];
+    // รหัสแกนนำ 2
+    $vocal_id_2 = $_REQUEST["vocal_id_2"];
+    // ชื่อแกนนำ 2
+    $vocal_name_2 = $_REQUEST["vocal_name_2"];
+    // รหัสแกนนำ 3
+    $vocal_id_3 = $_REQUEST["vocal_id_3"];
+    // ชื่อแกนนำ 3
+    $vocal_name_3 = $_REQUEST["vocal_name_3"];
+
 
     // เช็คคนซ้ำจาก เลขบัตรประชาชน
-    $check = "SELECT Idcard FROM id_card  WHERE Idcard = '$idcard' ";
+    $check = "SELECT Idcard FROM data  WHERE Idcard = '$idcard' ";
     $result1 = mysqli_query($conn, $check) or die(mysqli_error());
     $num=mysqli_num_rows($result1);
     if($num > 0){
@@ -37,15 +70,9 @@
     echo "window.history.back();";
     echo "</script>";
     }else{
-        $sql = "INSERT INTO id_card (Prefix,Name,Surname,Idcard,Birthday,Adress,Community,Leader_ID,Vocal,NPhone)
-        VALUES ('$prefix','$name','$surname','$idcard','$birthday','$adress','$community','$leader_id','$vocal','$nPhone')";
+        $sql = "INSERT INTO data (`prefix`, `name`, `surname`, `idcard`, `birthday`, `hNumber`, `moo`, `alley`, `road`, `parish`, `district`, `province`, `zip`, `nPhone`, `community`, `vocal_id_1`, `vocal_name_1`, `vocal_id_2`, `vocal_name_2`, `vocal_id_3`, `vocal_name_3`)
+                          VALUES ('$prefix','$name','$surname','$idcard','$birthday','$hNumber','$moo','$alley','$road','$parish','$district','$province','$zip','$nPhone','$community','$vocal_id_1','$vocal_name_1','$vocal_id_2','$vocal_name_2','$vocal_id_3','$vocal_name_3')";
             
-        // if(mysqli_query($conn, $sql)){
-        //      echo '<script>window.location.replace("http://localhost/programvote/index.php");</script>';
-        // } else{
-        //     echo "ERROR: Hush! Sorry $sql. "
-        //         . mysqli_error($conn);
-        // }
         $result = mysqli_query($conn, $sql) or die ("Error in query: $sql " . mysqli_error());
     }
     mysqli_close($conn);

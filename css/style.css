@@ -1,3 +1,10 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
+    /* font-size: 12px; */
+}
+
 .center {
     text-align: center;
 }
@@ -16,7 +23,7 @@ body {
     float: none;
     margin-bottom: 10px;
     width: 80%;
-    height: 35rem;
+    /* height: 35rem; */
 }
 
 .btn-text-right {
@@ -38,4 +45,8 @@ th,
 td {
     text-align: left;
     padding: 8px;
+}
+
+input::placeholder {
+    color: red;
 }
