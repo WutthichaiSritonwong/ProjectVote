@@ -137,6 +137,7 @@
 
                     function myFunction() {
                         window.location = 'print.php';
+                        window.location = 'showdata.php';
                     }
                 </script>
             </div>

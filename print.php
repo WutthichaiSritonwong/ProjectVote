@@ -26,19 +26,22 @@
     <div class="book">
         <div class="page">
             <?php
+            $prints = $_REQUEST["prints"];
+            // echo "prints ".$prints;
             $conn = mysqli_connect("localhost", "root", "", "db_vote");
             // $conn = mysqli_connect("sql6.freesqldatabase.com", "sql6523649", "lI4P283a7F", "sql6523649");
             // $conn = mysqli_connect("localhost", "id19657126_admin", "6>X*9Td7l|?0v?RC", "id19657126_db_vote");
             if ($conn === false) {
                 die("ERROR: Could not connect. " . mysqli_connect_error());
             }
-            $sql = "SELECT * FROM data";
+            // $sql = "SELECT * FROM data";
+            $sql = "SELECT * FROM `data` WHERE `community` = '$prints'";
 
             if ($result = mysqli_query($conn, $sql)) {
                 if (mysqli_num_rows($result) > 0) {
                     $names = '';
                     $counts = 0;
-                    echo "<h1 class='center'>รายชื่อแกนนำเขต" . $names . "</h1>";
+                    echo "<h1 class='center'>รายชื่อแกนนำเขต" . $prints . "</h1>";
                     echo "<table id='myTable' class='table table-bordered landscape' >";
                     echo "<tr class='thead-dark landscape'>";
                     echo "<th scope='col'>#</th>";
@@ -57,7 +60,8 @@
 
                     while ($row = mysqli_fetch_array($result)) {
                         $counts++;
-                        $names = 'DOME';
+                        $names = $row['community'];
+                        // echo "<h1 class='center'>รายชื่อแกนนำเขต" . $names . "</h1>";
                         echo "<tr class='landscape'>";
                         echo "<td>" . $counts . "</td>";
                         echo "<td>" . $row['prefix'] . "</td>";
