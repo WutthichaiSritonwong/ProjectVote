@@ -25,130 +25,8 @@
         <h1 style="margin-Top: 20px;">ฟอร์มกรอกข้อมูล</h1>
     </div>
     <br>
-    <div class="container">
-        <!-- <div class="card mb-3">
-            <div class="card-body">
-                <form action="saveDB.php" method="post">
-                    <div class="form-group row">
-                        <label for="prefix" class="col-sm-2 col-form-label">คำนำหน้า</label>
-                        <div class="col-sm-3">
-                            <select name="prefix" class="form-control">
-                                <option selected>เลือก...</option>
-                                <option value='นาย'>นาย</option>
-                                <option value='นางสาว'>นางสาว</option>
-                                <option value='นาง'>นาง</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label">ชื่อ</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control  " id="name" name="name" />
-                        </div>
-
-                        <label for="surname" class="col-sm-1 col-form-label">นามสกุล</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control  " id="surname" name="surname" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="idcard" class="col-sm-2 col-form-label">เลขบัตรประชาชน</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control  " id="idcard" name="idcard" placeholder="" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="birthday" class="col-sm-2 col-form-label">วัน-เดือน-ปีเกิด</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control  " id="birthday" name="birthday" placeholder="00/00/0000" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="birthday" class="col-sm-2 col-form-label">ที่อยู่</label>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control  " name="hNumber" placeholder="บ้านเลขที่">
-                        </div>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control  " name="moo" placeholder="หมู่">
-                        </div>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control  " name="alley" placeholder="ซอย">
-                        </div>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control  " name="road" placeholder="ถนน">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="birthday" class="col-sm-2 col-form-label"></label>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control  " name="parish" placeholder="ตำบล">
-                        </div>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control  " name="district" placeholder="อำเภอ">
-                        </div>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control  " name="province" placeholder="จังหวัด">
-                        </div>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control  " name="zip" placeholder="รหัสไปรษณีย์">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="nPhone" class="col-sm-2 col-form-label">เบอร์โทร</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control  " id="nPhone" name="nPhone" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="community" class="col-sm-2 col-form-label">ชุมชน/เขต</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control " id="community" name="community" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="leader_id" class="col-sm-2 col-form-label">แกนนำ 1</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control " id="leader_id" name="vocal_id_1" placeholder="รหัสแกนนำ 1" />
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control " id="leader_id" name="vocal_name_1" placeholder="ชื่อแกนนำ 1" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="leader_id" class="col-sm-2 col-form-label">แกนนำ 2</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control " id="leader_id" name="vocal_id_2" placeholder="รหัสแกนนำ 2" />
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control " id="leader_id" name="vocal_name_2" placeholder="ชื่อแกนนำ 2" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="leader_id" class="col-sm-2 col-form-label">แกนนำ 3</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control" id="leader_id" name="vocal_id_3" placeholder="รหัสแกนนำ 3" />
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control" id="leader_id" name="vocal_name_3" placeholder="ชื่อแกนนำ 3" />
-                        </div>
-                    </div>
-                    <button type="submit" name="submit" value="Submit" class="btn btn-success btns btn_position">บันทึก</button>
-                </form>
-                <br>
-                <div class="btn-text-right">
-                    <button type="submit" id="submitBtn" class="btn btn-primary btns">ดูข้อมูล</button>
-                </div>
-                <script>
-                    document.getElementById("submitBtn").addEventListener("click", myFunction);
-
-                    function myFunction() {
-                        window.location = 'print.php';
-                        window.location = 'showdata.php';
-                    }
-                </script>
-            </div>
-        </div> -->
-
+    <div class="container box">
+        <br>    
         <div class="">
             <h4 class="mb-3">ข้อมูลผู้ลงคะแนน</h4>
             <form class="needs-validation" action="saveDB.php" method="post">
@@ -156,7 +34,6 @@
                     <div class="col-md-2 mb-3">
                         <label for="prefix">คำนำหน้า</label>
                         <select name="prefix" class="form-control selects">
-                            <!-- <option selected>เลือก...</option> -->
                             <option value='นาย'>นาย</option>
                             <option value='นางสาว'>นางสาว</option>
                             <option value='นาง'>นาง</option>
@@ -189,44 +66,44 @@
                 <div class="row">
                     <div class="col-md-2 mb-3">
                         <label for="hNumber">บ้านเลขที่</label>
-                        <input type="text" class="form-control" id="hNumber" name="hNumber" placeholder="" required="">
+                        <input type="text" class="form-control" id="hNumber" name="hNumber" placeholder="">
                     </div>
                     <div class="col-md-2 mb-3">
                         <label for="moo">หมู่</label>
-                        <input type="text" class="form-control" id="moo" name="moo" placeholder="" required="">
+                        <input type="text" class="form-control" id="moo" name="moo" placeholder="">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="alley">ซอย</label>
-                        <input type="text" class="form-control" id="alley" name="alley" placeholder="" required="">
+                        <input type="text" class="form-control" id="alley" name="alley" placeholder="">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="road">ถนน</label>
-                        <input type="text" class="form-control" id="road" name="road" placeholder="" required="">
+                        <input type="text" class="form-control" id="road" name="road" placeholder="">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-3 mb-3">
                         <label for="parish">ตำบล</label>
-                        <input type="text" class="form-control" id="parish" name="parish" placeholder="" required="">
+                        <input type="text" class="form-control" id="parish" name="parish" placeholder="">
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="district">อำเภอ</label>
-                        <input type="text" class="form-control" id="district" name="district" placeholder="" required="">
+                        <input type="text" class="form-control" id="district" name="district" placeholder="">
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="province">จังหวัด</label>
-                        <input type="text" class="form-control" id="province" name="province" placeholder="" required="">
+                        <input type="text" class="form-control" id="province" name="province" placeholder="">
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="zip">รหัสไปรษณีย์</label>
-                        <input type="text" class="form-control" id="zip" name="zip" placeholder="" required="">
+                        <input type="text" class="form-control" id="zip" name="zip" placeholder="">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3 mb-3">
                         <label for="nPhone">หมายเลขโทรศัพท์</label>
-                        <input type="text" class="form-control  " id="nPhone" name="nPhone" placeholder="" required="" />
+                        <input type="text" class="form-control  " id="nPhone" name="nPhone" placeholder=""/>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="community">ชุมชน/เขต</label>
@@ -249,17 +126,17 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control" id="leader_id" name="vocal_id_2" placeholder="รหัสแกนนำ" >
+                        <input type="text" class="form-control" id="leader_id" name="vocal_id_2" placeholder="รหัสแกนนำ">
                         <small class="text-muted">*กรอกรหัสของแกนนำ B</small>
                     </div>
                     <div class="col-md-9 mb-3">
-                        <input type="text" class="form-control" id="leader_id" name="vocal_name_2" placeholder="ชื่อแกนนำ" >
+                        <input type="text" class="form-control" id="leader_id" name="vocal_name_2" placeholder="ชื่อแกนนำ">
                         <small class="text-muted">*กรอกชื่อของแกนนำ B</small>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control" id="leader_id" name="vocal_id_3" placeholder="รหัสแกนนำ" >
+                        <input type="text" class="form-control" id="leader_id" name="vocal_id_3" placeholder="รหัสแกนนำ">
                         <small class="text-muted">*กรอกรหัสของแกนนำ C</small>
                     </div>
                     <div class="col-md-9 mb-3">
@@ -268,16 +145,23 @@
                     </div>
                 </div>
                 <hr class="mb-4">
-                <button type="submit" name="submit" value="Submit" class="btn btn-success btn-lg Rbtn">บันทึก</button>
+                <!-- <button type="submit" name="submit" value="Submit" class="btn btn-success btn-lg Rbtn">บันทึก</button> -->
+                <div>
+                    <button type="submit" name="submit" style="text-align: center;width: 70%; display: block; margin: 0 auto;" value="Submit" class="btn btn-success btn-lg ">บันทึก</button>
+                </div>
             </form>
-            <button id="submitBtn" class="btn btn-primary btn-lg Rbtn">ดูข้อมูล</button>
+            <br>
+            <button id="submitBtn" type="submit" name="submit" style="text-align: center;width: 70%; display: block; margin: 0 auto;"  class="btn btn-primary btn-lg Rbtn">ดูข้อมูล</button>
         </div>
+        <br>
     </div>
     <hr>
     <footer class="footer">
-        <div class="container">
+        
+    <h6 class="H6Right">IT NETWORK COMPUTER SERVICE</h6>
+        <!-- <div class="container">
             <h5 class="center">IT NETWORK COMPUTER SERVICE</h5>
-        </div>
+        </div> -->
     </footer>
 </body>
 <script src="js\bootstrap.min.js"></script>

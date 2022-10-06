@@ -20,6 +20,11 @@
 
       //คำสั่ง Javascript สำหรับเรียกใช้งาน Datatable
       $('#example').DataTable({
+        aLengthMenu: [
+          [25, 50, 100, 200],
+          [25, 50, 100, 200]
+        ],
+        iDisplayLength: 25,
         "processing": true,
         "serverSide": true,
         'serverMethod': 'post',
@@ -61,6 +66,9 @@
           {
             data: 'vocal_name_3'
           },
+          {
+            data: 'Action'
+          },
         ]
       });
     });
@@ -73,10 +81,11 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="">
     <form action="print.php" method="post">
       <div class="form-group row">
-        <label for="prefix" class="col-sm-2 col-form-label">สร้างรายงานตามแกนนำ</label>
+
+        <label for="prefix" class="col-sm-1 col-form-label">เลือกแกนนำ</label>
         <?php
         $conn = mysqli_connect("localhost", "root", "", "db_vote");
         if ($conn === false) {
@@ -101,7 +110,7 @@
           echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
         }
         ?>
-        <button type="submit" name="submit" value="Submit" class="btn btn-success btns">Go</button>
+        <button style="width: 10%;" type="submit" name="submit" value="Submit" class="btn btn-success btns">สร้างรายงาน</button>
       </div>
     </form>
   </div>
@@ -120,9 +129,12 @@
         <th>แกนนำ A</th>
         <th>แกนนำ B</th>
         <th>แกนนำ C</th>
+        <th>Action</th>
       </tr>
     </thead>
   </table>
+  <br>
+  <button style="width: 10%;" onclick="history.back()" class="btn btn-primary">กลับ</button>
 </body>
 
 </html>
