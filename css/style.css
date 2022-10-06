@@ -10,12 +10,13 @@
 }
 
 body {
+    max-height: 100%;
     /* background-image: url("thai-flag-open.jpg"); */
-    background-color: #00204A;
+    /* background-color: #00204A; */
 }
 
 .card {
-    background-color: #EFFBFF;
+    /* background-color: #EFFBFF; */
 }
 
 .card {
@@ -49,4 +50,42 @@ td {
 
 input::placeholder {
     color: red;
+}
+
+.btn_position {
+    margin-top: 20px;
+
+}
+
+/* ::placeholder {
+    text-align: center; 
+ } */
+.padding {
+    padding-left: 50px;
+}
+
+input[type="text"] {
+    border-radius: 10px;
+}
+
+.selects {
+    border-radius: 10px;
+}
+
+#datepicker {
+    border-radius: 10px;
+}
+
+.Rbtn {
+    margin-top: 0px;
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.Lbtn {
+    margin-top: 0px;
+    display: block;
+    margin-right: auto;
+    margin-left: 0;
 }

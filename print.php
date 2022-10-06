@@ -35,46 +35,55 @@
                 die("ERROR: Could not connect. " . mysqli_connect_error());
             }
             // $sql = "SELECT * FROM data";
-            $sql = "SELECT * FROM `data` WHERE `community` = '$prints'";
+            $sql = "SELECT * FROM `data` WHERE `vocal_name_1` = '$prints'";
 
             if ($result = mysqli_query($conn, $sql)) {
                 if (mysqli_num_rows($result) > 0) {
                     $names = '';
                     $counts = 0;
-                    echo "<h1 class='center'>รายชื่อแกนนำเขต" . $prints . "</h1>";
-                    echo "<table id='myTable' class='table table-bordered landscape' >";
+                    echo "<h1 class='center'>รายชื่อแกนนำเขต " . $prints . "</h1>";
+                    echo "<table id='myTable' class='table table-bordered landscape '>";
+                    echo "<thead>";
                     echo "<tr class='thead-dark landscape'>";
-                    echo "<th scope='col'>#</th>";
-                    echo "<th scope='col'>คำนำหน้า</th>";
-                    echo "<th scope='col'>ชื่อ</th>";
-                    echo "<th scope='col'>สกุล</th>";
-                    echo "<th scope='col'>เลขบัตรประชาชน</th>";
-                    echo "<th scope='col'>วันเดือนปีเกิด</th>";
-                    echo "<th scope='col'>ที่อยู่</th>";
-                    echo "<th scope='col'>เบอร์โทร</th>";
-                    echo "<th scope='col'>ชุมชน/เขต</th>";
-                    echo "<th scope='col'>แกนนำ 1</th>";
-                    echo "<th scope='col'>แกนนำ 2</th>";
-                    echo "<th scope='col'>แกนนำ 3</th>";
+                    echo "<th class='center' scope='col'>ลำดับ</th>";
+                    echo "<th class='center' scope='col'>แกนนำ A</th>";
+                    echo "<th class='center' scope='col'>แกนนำ B</th>";
+                    echo "<th class='center' scope='col'>แกนนำ C</th>";
+                    echo "<th class='center' scope='col'>คำนำหน้า</th>";
+                    echo "<th class='center' scope='col'>ชื่อ</th>";
+                    echo "<th class='center' scope='col'>สกุล</th>";
+                    echo "<th class='center' scope='col'>เลขบัตรประชาชน</th>";
+                    // echo "<th class='center' scope='col'>วันเดือนปีเกิด</th>";
+                    echo "<th class='center' scope='col'>ที่อยู่</th>";
+                    echo "<th class='center' scope='col'>เบอร์โทร</th>";
+                    echo "<th class='center' scope='col'>ชุมชน/เขต</th>";
+                    
                     echo "</tr>";
+                    echo "</thead>";
+                    
 
                     while ($row = mysqli_fetch_array($result)) {
                         $counts++;
                         $names = $row['community'];
+                        if($row['hNumber'] == null){
+                            $adress = '';
+                        }else{
+                            $adress = "บ้านเลขที่ " . $row['hNumber'] . " หมู่ " . $row['moo'] . " ต." . $row['parish'] . " อ." . $row['district'] . " จ." . $row['province'] . " " . $row['zip'];
+                        }
                         // echo "<h1 class='center'>รายชื่อแกนนำเขต" . $names . "</h1>";
                         echo "<tr class='landscape'>";
                         echo "<td>" . $counts . "</td>";
+                        echo "<td>" . $row['vocal_name_1'] . "</td>";
+                        echo "<td>" . $row['vocal_name_2'] . "</td>";
+                        echo "<td>" . $row['vocal_name_3'] . "</td>";
                         echo "<td>" . $row['prefix'] . "</td>";
                         echo "<td>" . $row['name'] . "</td>";
                         echo "<td>" . $row['surname'] . "</td>";
                         echo "<td>" . $row['idcard'] . "</td>";
-                        echo "<td>" . $row['birthday'] . "</td>";
-                        echo "<td>" . "บ้านเลขที่ " . $row['hNumber'] . "หมู่ " . $row['moo'] . "ต." . $row['parish'] . " อ." . $row['district'] . " จ." . $row['province'] . " " . $row['zip'] . "</td>";
+                        // echo "<td>" . $row['birthday'] . "</td>";
+                        echo "<td>" . $adress . "</td>";
                         echo "<td>" . $row['nPhone'] . "</td>";
                         echo "<td>" . $row['community'] . "</td>";
-                        echo "<td>" . $row['vocal_name_1'] . "</td>";
-                        echo "<td>" . $row['vocal_name_2'] . "</td>";
-                        echo "<td>" . $row['vocal_name_3'] . "</td>";
                         echo "</tr>";
                     }
                     echo "</table>";

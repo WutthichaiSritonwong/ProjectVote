@@ -34,6 +34,7 @@ body {
 @page {
     size: A4;
     margin: 0;
+    margin-top: 20px;
     size: landscape;
 }
 
@@ -68,4 +69,24 @@ body {
 
 .center {
     text-align: center;
+}
+
+
+/* Borders (if you need them) */
+
+.header,
+.header-space,
+.footer,
+.footer-space {
+    height: 30px;
+}
+
+.header {
+    position: fixed;
+    top: 20px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
 }
