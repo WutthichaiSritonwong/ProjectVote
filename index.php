@@ -7,13 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>โปรแกรมเลือกตั้ง</title>
     <link rel="stylesheet" href="css\bootstrap.min.css" />
-    <!-- <link rel="stylesheet" href="css\adminlte.min.css" /> -->
     <link rel="stylesheet" href="css\style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
     <script src="css\jquery.min.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
@@ -21,12 +19,35 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <h1 class="navbar-brand">ฟอร์มกรอกข้อมูล</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php">ฟอร์ม
+                            <span class="visually-hidden">(กรอกข้อมูลแกนนำ)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="showdata.php">ดูข้อมูลทั้งหมด</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="report.php">สร้างรายงาน</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container center">
         <h1 style="margin-Top: 20px;">ฟอร์มกรอกข้อมูล</h1>
     </div>
     <br>
     <div class="container box">
-        <br>    
+        <br>
         <div class="">
             <h4 class="mb-3">ข้อมูลผู้ลงคะแนน</h4>
             <form class="needs-validation" action="saveDB.php" method="post">
@@ -103,7 +124,7 @@
                 <div class="row">
                     <div class="col-md-3 mb-3">
                         <label for="nPhone">หมายเลขโทรศัพท์</label>
-                        <input type="text" class="form-control  " id="nPhone" name="nPhone" placeholder=""/>
+                        <input type="text" class="form-control  " id="nPhone" name="nPhone" placeholder="" />
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="community">ชุมชน/เขต</label>
@@ -116,7 +137,7 @@
 
                 <div class="row">
                     <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control" id="leader_id" name="vocal_id_1" placeholder="รหัสแกนนำ" required="">
+                        <input type="text" class="form-control" id="leader_id" name="vocal_id_1" value="A" placeholder="รหัสแกนนำ" required="">
                         <small class="text-muted">*กรอกรหัสของแกนนำ A</small>
                     </div>
                     <div class="col-md-9 mb-3">
@@ -126,7 +147,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control" id="leader_id" name="vocal_id_2" placeholder="รหัสแกนนำ">
+                        <input type="text" class="form-control" id="leader_id" name="vocal_id_2" value="B" placeholder="รหัสแกนนำ">
                         <small class="text-muted">*กรอกรหัสของแกนนำ B</small>
                     </div>
                     <div class="col-md-9 mb-3">
@@ -136,7 +157,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control" id="leader_id" name="vocal_id_3" placeholder="รหัสแกนนำ">
+                        <input type="text" class="form-control" id="leader_id" name="vocal_id_3" value="C" placeholder="รหัสแกนนำ">
                         <small class="text-muted">*กรอกรหัสของแกนนำ C</small>
                     </div>
                     <div class="col-md-9 mb-3">
@@ -150,19 +171,15 @@
                     <button type="submit" name="submit" style="text-align: center;width: 70%; display: block; margin: 0 auto;" value="Submit" class="btn btn-success btn-lg ">บันทึก</button>
                 </div>
             </form>
-            <br>
-            <button id="submitBtn" type="submit" name="submit" style="text-align: center;width: 70%; display: block; margin: 0 auto;"  class="btn btn-primary btn-lg Rbtn">ดูข้อมูล</button>
+            <!-- <br>
+            <button id="submitBtn" type="submit" name="submit" style="text-align: center;width: 70%; display: block; margin: 0 auto;"  class="btn btn-primary btn-lg Rbtn">ดูข้อมูล</button> -->
         </div>
         <br>
     </div>
-    <hr>
+    <!-- <hr>
     <footer class="footer">
-        
-    <h6 class="H6Right">IT NETWORK COMPUTER SERVICE</h6>
-        <!-- <div class="container">
-            <h5 class="center">IT NETWORK COMPUTER SERVICE</h5>
-        </div> -->
-    </footer>
+        <h6 class="H6Right">IT NETWORK COMPUTER SERVICE</h6>
+    </footer> -->
 </body>
 <script src="js\bootstrap.min.js"></script>
 <script>

@@ -14,6 +14,8 @@ if (isset($_POST['start'])) {
 
   // Create connection
   $conn = mysqli_connect($servername, $username, $password, $dbname);
+  // $conn = mysqli_connect("localhost", "root", "", "db_vote");
+
 
   // Check connection
   if (!$conn) {
@@ -26,7 +28,28 @@ if (isset($_POST['start'])) {
 
   //Query กรณีมีการค้นหาข้อมูล
   if ($searchValueData != '') {
-    $searchValueResult = " WHERE name LIKE '%" . $searchValueData . "%'  OR surname LIKE '%" . $searchValueData . "%' OR vocal_id_1 LIKE '%" . $searchValueData . "%' OR vocal_name_1 LIKE '%" . $searchValueData . "%'OR vocal_id_2 LIKE '%" . $searchValueData . "%' OR vocal_name_2 LIKE '%" . $searchValueData . "%'OR vocal_id_3 LIKE '%" . $searchValueData . "%' OR vocal_name_3 LIKE '%" . $searchValueData . "%' ";
+    $searchValueResult = " WHERE name LIKE '%" . $searchValueData . 
+    "%' OR prefix LIKE '%" . $searchValueData . 
+    "%' OR name LIKE '%" . $searchValueData . 
+    "%' OR surname LIKE '%" . $searchValueData . 
+    "%' OR idcard LIKE '%" . $searchValueData . 
+    "%' OR birthday LIKE '%" . $searchValueData . 
+    "%' OR hNumber LIKE '%" . $searchValueData . 
+    "%' OR moo LIKE '%" . $searchValueData . 
+    "%' OR alley LIKE '%" . $searchValueData . 
+    "%' OR road LIKE '%" . $searchValueData . 
+    "%' OR parish LIKE '%" . $searchValueData . 
+    "%' OR district LIKE '%" . $searchValueData . 
+    "%' OR province LIKE '%" . $searchValueData . 
+    "%' OR zip LIKE '%" . $searchValueData . 
+    "%' OR nPhone LIKE '%" . $searchValueData . 
+    "%' OR community LIKE '%" . $searchValueData . 
+    "%' OR vocal_id_1 LIKE '%" . $searchValueData . 
+    "%' OR vocal_name_1 LIKE '%" . $searchValueData . 
+    "%' OR vocal_id_2 LIKE '%" . $searchValueData . 
+    "%' OR vocal_name_2 LIKE '%" . $searchValueData . 
+    "%' OR vocal_id_3 LIKE '%" . $searchValueData . 
+    "%' OR vocal_name_3 LIKE '%" . $searchValueData;
   }
 
   //Query นับจำนวนข้อมูลทั้งหมด
