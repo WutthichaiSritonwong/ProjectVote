@@ -13,8 +13,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
     <script src="css\jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <!-- <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" /> -->
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- jQuery UI library -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("#autocompleteA").autocomplete({
+                source: "autocompleteA.php",
+                minLength: 2,
+                select: function(event, ui) {}
+            });
+            $("#autocompleteB").autocomplete({
+                source: 'autocompleteB.php',
+                minLength: 2,
+                select: function(event, ui) {}
+            });
+            $("#autocompleteC").autocomplete({
+                source: 'autocompleteC.php',
+                minLength: 2,
+                select: function(event, ui) {}
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -46,9 +71,11 @@
         <h1>สร้างรายงานทังหมด</h1>
         <div class="">
             <form class="form-inline" action="print.php" method="post">
-            <input type="hidden" id="id" name="id" value="All">
+                <input type="hidden" id="id" name="id" value="All">
                 <?php
-                $conn = mysqli_connect("localhost", "root", "", "db_vote");
+                include 'connect.php';
+                $conn = OpenCon();
+                // $conn = mysqli_connect("localhost", "root", "", "db_vote");
 
                 if ($conn === false) {
                     die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -67,102 +94,130 @@
                 }
                 ?>
                 <br>
-                <button style="width: 25%;" type="submit" name="all" value="Submit" class="btn btn-primary mb-2">สร้างรายงาน</button>
+                <button style="width: 20%;" type="submit" name="all" value="Submit" class="btn btn-primary mb-2 mx-sm-3">สร้างรายงาน</button>
             </form>
         </div>
         <hr>
 
         <div class="">
             <h1>สร้างรายงานตามแกนนำ A</h1>
-            <form class="form-inline" action="print.php" method="post">
+            <form class="" action="print.php" method="post">
+                <input type="text" autocomplete="off" name="prints" id="autocompleteA" placeholder="ชื่อแกนนำ" class="form-control form-group mx-sm-3 mb-2" style='width: 50%;'>
                 <input type="hidden" id="id" name="id" value="A">
                 <?php
-                $conn = mysqli_connect("localhost", "root", "", "db_vote");
+                // if ($result = mysqli_query($conn, $sql)) {
+                //     if (mysqli_num_rows($result) > 0) {
+                //         // echo "<input type='text' autocomplete='off' name='$row[vocal_name_1]' id='autocomplete' placeholder='ชื่อแกนนำ' class='form-control'>";
+                //         while ($row = mysqli_fetch_array($result)) {
+                //             // echo "<option value='$row[vocal_name_1]'>" . $row['vocal_name_1'] . "</option>";
 
-                if ($conn === false) {
-                    die("ERROR: Could not connect. " . mysqli_connect_error());
-                }
-                $sql = "SELECT DISTINCT vocal_name_1 FROM `data`";
-                if ($result = mysqli_query($conn, $sql)) {
-                    if (mysqli_num_rows($result) > 0) {
-                        echo "<select name='prints' class='form-control form-group mx-sm-3 mb-2' style='width: 50%;'>";
-                        while ($row = mysqli_fetch_array($result)) {
-                            echo "<option value='$row[vocal_name_1]'>" . $row['vocal_name_1'] . "</option>";
-                        }
-                        echo "</select>";
-                        mysqli_free_result($result);
-                    } else {
-                        echo "No records matching your query were found.";
-                    }
-                } else {
-                    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                }
+                //         }
+                //         mysqli_free_result($result);
+                //     } else {
+                //         echo "No records matching your query were found.";
+                //     }
+                // } else {
+                //     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                // }
+                // $conn = mysqli_connect("localhost", "root", "", "db_vote");
+
+                // if ($conn === false) {
+                //     die("ERROR: Could not connect. " . mysqli_connect_error());
+                // }
+                // $sql = "SELECT DISTINCT vocal_name_1 FROM `data`";
+                // if ($result = mysqli_query($conn, $sql)) {
+                //     if (mysqli_num_rows($result) > 0) {
+                //         echo "<select name='prints' class='form-control form-group mx-sm-3 mb-2' style='width: 50%;'>";
+                //         while ($row = mysqli_fetch_array($result)) {
+                //             echo "<option value='$row[vocal_name_1]'>" . $row['vocal_name_1'] . "</option>";
+                //         }
+                //         echo "</select>";
+                //         mysqli_free_result($result);
+                //     } else {
+                //         echo "No records matching your query were found.";
+                //     }
+                // } else {
+                //     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                // }
                 ?>
-
                 <br>
-                <button style="width: 25%;" type="submit" name="submit" value="Submit" class="btn btn-primary mb-2">สร้างรายงาน</button>
+                <button style="width: 20%;" type="submit" name="submit" value="Submit" class="btn btn-primary mb-2 mx-sm-3">สร้างรายงาน</button>
+            </form>
+            <form class="" action="print.php" method="post">
+                <input type="hidden" id="id" name="id" value="allA">
+                <button style="width: 20%;" type="submit" name="submit" value="Submit" class="btn btn-primary mb-2 mx-sm-3">สร้างรายงานทั้งหมด</button>
             </form>
         </div>
         <hr>
         <h1>สร้างรายงานตามแกนนำ B</h1>
         <div class="">
-            <form class="form-inline" action="print.php" method="post">
-            <input type="hidden" id="id" name="id" value="B">
+            <form class="" action="print.php" method="post">
+                <input type="text" autocomplete="off" name="prints" id="autocompleteB" placeholder="ชื่อแกนนำ" class="form-control form-group mx-sm-3 mb-2" style='width: 50%;'>
+                <input type="hidden" id="id" name="id" value="B">
                 <?php
-                $conn = mysqli_connect("localhost", "root", "", "db_vote");
+                // $conn = mysqli_connect("localhost", "root", "", "db_vote");
 
-                if ($conn === false) {
-                    die("ERROR: Could not connect. " . mysqli_connect_error());
-                }
-                $sql = "SELECT DISTINCT vocal_name_2 FROM `data`";
-                if ($result = mysqli_query($conn, $sql)) {
-                    if (mysqli_num_rows($result) > 0) {
-                        echo "<select name='prints' class='form-control form-group mx-sm-3 mb-2' style='width: 50%;'>";
-                        while ($row = mysqli_fetch_array($result)) {
-                            echo "<option value='$row[vocal_name_2]'>" . $row['vocal_name_2'] . "</option>";
-                        }
-                        echo "</select>";
-                        mysqli_free_result($result);
-                    } else {
-                        echo "No records matching your query were found.";
-                    }
-                } else {
-                    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                }
+                // if ($conn === false) {
+                //     die("ERROR: Could not connect. " . mysqli_connect_error());
+                // }
+                // $sql = "SELECT DISTINCT vocal_name_2 FROM `data`";
+                // if ($result = mysqli_query($conn, $sql)) {
+                //     if (mysqli_num_rows($result) > 0) {
+                //         echo "<select name='prints' class='form-control form-group mx-sm-3 mb-2' style='width: 50%;'>";
+                //         while ($row = mysqli_fetch_array($result)) {
+                //             echo "<option value='$row[vocal_name_2]'>" . $row['vocal_name_2'] . "</option>";
+                //         }
+                //         echo "</select>";
+                //         mysqli_free_result($result);
+                //     } else {
+                //         echo "No records matching your query were found.";
+                //     }
+                // } else {
+                //     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                // }
                 ?>
                 <br>
-                <button style="width: 25%;" type="submit" name="submit" value="Submit" class="btn btn-primary mb-2">สร้างรายงาน</button>
+                <button style="width: 20%;" type="submit" name="submit" value="Submit" class="btn btn-primary mb-2 mx-sm-3">สร้างรายงาน</button>
+            </form>
+            <form class="" action="print.php" method="post">
+                <input type="hidden" id="id" name="id" value="allB">
+                <button style="width: 20%;" type="submit" name="submit" value="Submit" class="btn btn-primary mb-2 mx-sm-3">สร้างรายงานทั้งหมด</button>
             </form>
         </div>
         <hr>
         <h1>สร้างรายงานตามแกนนำ C</h1>
         <div class="">
-            <form class="form-inline" action="print.php" method="post">
-            <input type="hidden" id="id" name="id" value="C">
+            <form class="" action="print.php" method="post">
+            <input type="text" autocomplete="off" name="prints" id="autocompleteC" placeholder="ชื่อแกนนำ" class="form-control form-group mx-sm-3 mb-2" style='width: 50%;'>
+                <input type="hidden" id="id" name="id" value="C">
                 <?php
-                $conn = mysqli_connect("localhost", "root", "", "db_vote");
+                // $conn = mysqli_connect("localhost", "root", "", "db_vote");
 
-                if ($conn === false) {
-                    die("ERROR: Could not connect. " . mysqli_connect_error());
-                }
-                $sql = "SELECT DISTINCT vocal_name_3 FROM `data`";
-                if ($result = mysqli_query($conn, $sql)) {
-                    if (mysqli_num_rows($result) > 0) {
-                        echo "<select name='prints' class='form-control form-group mx-sm-3 mb-2' style='width: 50%;'>";
-                        while ($row = mysqli_fetch_array($result)) {
-                            echo "<option value='$row[vocal_name_3]'>" . $row['vocal_name_3'] . "</option>";
-                        }
-                        echo "</select>";
-                        mysqli_free_result($result);
-                    } else {
-                        echo "No records matching your query were found.";
-                    }
-                } else {
-                    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                }
+                // if ($conn === false) {
+                //     die("ERROR: Could not connect. " . mysqli_connect_error());
+                // }
+                // $sql = "SELECT DISTINCT vocal_name_3 FROM `data`";
+                // if ($result = mysqli_query($conn, $sql)) {
+                //     if (mysqli_num_rows($result) > 0) {
+                //         echo "<select name='prints' class='form-control form-group mx-sm-3 mb-2' style='width: 50%;'>";
+                //         while ($row = mysqli_fetch_array($result)) {
+                //             echo "<option value='$row[vocal_name_3]'>" . $row['vocal_name_3'] . "</option>";
+                //         }
+                //         echo "</select>";
+                //         mysqli_free_result($result);
+                //     } else {
+                //         echo "No records matching your query were found.";
+                //     }
+                // } else {
+                //     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                // }
                 ?>
                 <br>
-                <button style="width: 25%;" type="submit" name="submit" value="Submit" class="btn btn-primary mb-2">สร้างรายงาน</button>
+                <button style="width: 20%;" type="submit" name="submit" value="Submit" class="btn btn-primary mb-2 mx-sm-3">สร้างรายงาน</button>
+            </form>
+            <form class="" action="print.php" method="post">
+                <input type="hidden" id="id" name="id" value="allC">
+                <button style="width: 20%;" type="submit" name="submit" value="Submit" class="btn btn-primary mb-2 mx-sm-3">สร้างรายงานทั้งหมด</button>
             </form>
         </div>
         <hr>

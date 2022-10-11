@@ -11,7 +11,9 @@
 
 <body>
     <?php
-    $conn = mysqli_connect("localhost", "root", "", "db_vote");
+    include 'connect.php';
+    $conn = OpenCon();
+    // $conn = mysqli_connect("localhost", "root", "", "db_vote");
     // $conn = mysqli_connect("sql6.freesqldatabase.com", "sql6523649", "lI4P283a7F", "sql6523649");
     // $conn = mysqli_connect("localhost", "id19657126_admin", "6>X*9Td7l|?0v?RC", "id19657126_db_vote");
     if ($conn === false) {
@@ -89,7 +91,7 @@
         echo "</script>";
     }
     // Close connection
-    // mysqli_close($conn);
+    CloseCon($conn);
     ?>
 </body>
 

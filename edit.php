@@ -19,7 +19,10 @@
 
 <body>
     <?php
-    $conn = mysqli_connect("localhost", "root", "", "db_vote");
+    // $conn = mysqli_connect("localhost", "root", "", "db_vote");
+    include 'connect.php';
+    $conn = OpenCon();
+
     if ($conn === false) {
         die("ERROR: Could not connect. "
             . mysqli_connect_error());
@@ -41,14 +44,14 @@
                     <br>
                     <div class="">
                         <form class="needs-validation" action="update.php" method="post">
-                            <h4 class="mb-3">ข้อมูลผู้ลงคะแนน <input style="visibility: hidden;"type="text" name="ID" value="<?php echo $ID; ?>"> </h4> 
+                            <h4 class="mb-3">ข้อมูลผู้ลงคะแนน <input style="visibility: hidden;" type="text" name="ID" value="<?php echo $ID; ?>"> </h4>
                             <div class="row">
                                 <div class="col-md-2 mb-3">
                                     <label for="prefix">คำนำหน้า</label>
-                                    <select name="prefix" value="<?php echo $row['prefix']; ?>" class="form-control selects">
-                                        <option value='นาย'>นาย</option>
-                                        <option value='นางสาว'>นางสาว</option>
-                                        <option value='นาง'>นาง</option>
+                                    <select name="prefix" value="" class="form-control selects">
+                                        <option value="นาย" <?php if ($row['prefix'] == 'นาย') { ?> selected="selected" <?php } ?>>นาย</option>
+                                        <option value="นางสาว" <?php if ($row['prefix'] == 'นางสาว') { ?> selected="selected" <?php } ?>>นางสาว</option>
+                                        <option value="นาง" <?php if ($row['prefix'] == 'นาง') { ?> selected="selected" <?php } ?>>นาง</option>
                                     </select>
                                 </div>
                                 <div class="col-md-5 mb-3">
@@ -170,7 +173,7 @@
                     </div>
                     <br>
                 </div>
-                
+
     <?php
             }
             mysqli_free_result($result);

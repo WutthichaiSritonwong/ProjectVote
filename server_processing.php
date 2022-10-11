@@ -1,21 +1,21 @@
 <?php
-if (isset($_POST['start'])) {
 
+if (isset($_POST['start'])) {
   $start = $_POST['start']; //รับข้อมูล เลขหน้าที่จะแสดง 
 
   $length = $_POST['length']; //รับข้อมูล จำนวนที่แสดงต่อหน้า ค่าเริ่มต้นคือ 10
 
   $searchData = $_POST['search']['value']; //รับข้อมูล ช่อง Search
 
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "db_vote"; //ชื่อฐานข้อมูล
-
-  // Create connection
-  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  // $servername = "localhost";
+  // $username = "root";
+  // $password = "";
+  // $dbname = "db_vote";
+  // $conn = mysqli_connect($servername, $username, $password, $dbname);
   // $conn = mysqli_connect("localhost", "root", "", "db_vote");
-
+  // include 'connect.php';
+  include 'connect.php';
+  $conn = OpenCon();
 
   // Check connection
   if (!$conn) {
@@ -29,7 +29,7 @@ if (isset($_POST['start'])) {
   //Query กรณีมีการค้นหาข้อมูล
   if ($searchValueData != '') {
     $searchValueResult = " WHERE name LIKE '%" . $searchValueData . 
-    "%' OR prefix LIKE '%" . $searchValueData . 
+    "%' OR prefix LIKE '%" . $searchValueData .
     "%' OR name LIKE '%" . $searchValueData . 
     "%' OR surname LIKE '%" . $searchValueData . 
     "%' OR idcard LIKE '%" . $searchValueData . 
@@ -49,7 +49,7 @@ if (isset($_POST['start'])) {
     "%' OR vocal_id_2 LIKE '%" . $searchValueData . 
     "%' OR vocal_name_2 LIKE '%" . $searchValueData . 
     "%' OR vocal_id_3 LIKE '%" . $searchValueData . 
-    "%' OR vocal_name_3 LIKE '%" . $searchValueData;
+    "%' OR vocal_name_3 LIKE '%" . $searchValueData. "%' ";
   }
 
   //Query นับจำนวนข้อมูลทั้งหมด

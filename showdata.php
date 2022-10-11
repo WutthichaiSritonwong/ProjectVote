@@ -54,7 +54,6 @@
           {
             data: 'address'
           },
-
           {
             data: 'nPhone'
           },
@@ -132,7 +131,9 @@
         <label for="prefix" class="col-sm-1 col-form-label">เลือกแกนนำ</label>
         <?php
         // $conn = mysqli_connect("169.254.73.101", "admin", "admin", "db_vote");
-        $conn = mysqli_connect("localhost", "root", "", "db_vote");
+        include 'connect.php';
+        $conn = OpenCon();
+        // $conn = mysqli_connect("localhost", "root", "", "db_vote");
 
         if ($conn === false) {
           die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -154,6 +155,7 @@
         } else {
           echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
         }
+        CloseCon($conn);
         ?>
         <button style="width: 10%;" type="submit" name="submit" value="Submit" class="btn btn-success btns">สร้างรายงาน</button>
       </div>
