@@ -301,7 +301,8 @@
                         echo "</table>";
                         mysqli_free_result($result);
                     } else {
-                        echo "No records matching your query were found.";
+                        echo "ไม่มีข้อมูลใน DATABASE";
+                        // echo "No records matching your query were found.";
                     }
                 } else {
                     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
@@ -360,7 +361,8 @@
                         mysqli_free_result($result);
                         CloseCon($conn);
                     } else {
-                        echo "No records matching your query were found.";
+                        // echo "No records matching your query were found.";
+                        echo "ไม่มีข้อมูลแกนนำ C ใน DATABASE";
                     }
                 } else {
                     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
@@ -420,12 +422,16 @@
                         mysqli_free_result($result);
                         CloseCon($conn);
                     } else {
-                        echo "No records matching your query were found.";
+                        // echo "No records matching your query were found.";
+                        echo "ไม่มีข้อมูลแกนนำ B ใน DATABASE";
                     }
                 } else {
                     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                 }
             } else if ($_REQUEST["id"] == "allC") {
+                if(!empty($_POST['prints'])){
+                    echo "NOT";
+                }
                 if ($conn === false) {
                     die("ERROR: Could not connect. " . mysqli_connect_error());
                 }
@@ -479,7 +485,8 @@
                         mysqli_free_result($result);
                         CloseCon($conn);
                     } else {
-                        echo "No records matching your query were found.";
+                        // echo "No records matching your query were found.";
+                        echo "ไม่มีข้อมูลแกนนำ C ใน DATABASE";
                     }
                 } else {
                     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
