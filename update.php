@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Document</title> -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+</head>
+<body>
+    
 <?php
 // $conn = mysqli_connect("localhost", "root", "", "db_vote");
 include 'connect.php';
@@ -58,12 +72,29 @@ $sql = "UPDATE data SET `prefix`='$prefix',`name`='$name',`surname`='$surname',`
 $result = mysqli_query($conn, $sql) or die("Error in query: $sql " . $mysqli->error);
 mysqli_close($conn);
 if ($result) {
-    echo "<script type='text/javascript'>";
-    echo "alert('แก้ไขข้อมูลสำเร็จ');";
-    echo "window.location = 'showdata.php'; ";
-    echo "</script>";
+    echo '<script>
+    setTimeout(function() {
+        swal({
+            title: "แก้ไขข้อมูลสำเร็จ",
+            text: "โปรดรอสักครู่!",
+            type: "success",
+            timer: 1000,
+            showConfirmButton: false
+        }, function() {
+            window.location = "showdata.php";
+        });
+    });
+</script>';
+    // echo "<script type='text/javascript'>";
+    // echo "alert('แก้ไขข้อมูลสำเร็จ');";
+    // echo "window.location = 'showdata.php'; ";
+    // echo "</script>";
 } else {
     echo "<script type='text/javascript'>";
     echo "window.location = 'index.php'; ";
     echo "</script>";
 }
+?>
+</body>
+</html>
+

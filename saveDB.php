@@ -7,15 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAVE</title>
     <link rel="stylesheet" href="dist\css\bootstrap.min.css" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
 </head>
 
 <body>
     <?php
     include 'connect.php';
     $conn = OpenCon();
-    // $conn = mysqli_connect("localhost", "root", "", "db_vote");
-    // $conn = mysqli_connect("sql6.freesqldatabase.com", "sql6523649", "lI4P283a7F", "sql6523649");
-    // $conn = mysqli_connect("localhost", "id19657126_admin", "6>X*9Td7l|?0v?RC", "id19657126_db_vote");
     if ($conn === false) {
         die("ERROR: Could not connect. "
             . mysqli_connect_error());
@@ -69,27 +70,68 @@
     $result1 = mysqli_query($conn, $check) or die($mysqli->error);
     $num = mysqli_num_rows($result1);
     if ($num > 0) {
-        echo "<script>";
-        echo "alert(' ข้อมูลซ้ำ กรุณาเพิ่มใหม่อีกครั้ง !');";
-        echo "window.history.back();";
-        echo "</script>";
+        echo '<script>
+            setTimeout(function() {
+                swal({
+                    title: "ข้อมูลซ้ำ!",
+                    text: "กรุณาเพิ่มใหม่อีกครั้ง!",
+                    type: "error",
+                    timer: 2000,
+                    showConfirmButton: false
+                }, function() {
+                    window.history.back();
+                });
+            });
+        </script>';
+
+        // echo "<script>";
+        // echo "alert(' ข้อมูลซ้ำ กรุณาเพิ่มใหม่อีกครั้ง !');";
+        // echo "window.history.back();";
+        // echo "</script>";
     } else {
         $sql = "INSERT INTO data (`prefix`, `name`, `surname`, `idcard`, `birthday`, `hNumber`, `moo`, `alley`, `road`, `parish`, `district`, `province`, `zip`, `nPhone`, `community`, `vocal_id_1`, `vocal_name_1`, `vocal_id_2`, `vocal_name_2`, `vocal_id_3`, `vocal_name_3`)
                           VALUES ('$prefix','$name','$surname','$idcard','$birthday','$hNumber','$moo','$alley','$road','$parish','$district','$province','$zip','$nPhone','$community','$vocal_id_1','$vocal_name_1','$vocal_id_2','$vocal_name_2','$vocal_id_3','$vocal_name_3')";
-
         $result = mysqli_query($conn, $sql) or die("Error in query: $sql " . $mysqli->error);
+        if ($result) {
+            echo '<script>
+                setTimeout(function() {
+                    swal({
+                        title: "บันทึกสำเร็จ!",
+                        text: "โปรดรอสักครู่!",
+                        type: "success",
+                        timer: 1000,
+                        showConfirmButton: false
+                    }, function() {
+                        window.location = "index.php";
+                    });
+                });
+            </script>';
+            // echo "<script type='text/javascript'>";
+            // echo "alert('เพิ่มข้อมูลสำเร็จ');";
+            // echo "window.location = 'index.php'; ";
+            // echo "</script>";
+        } else {
+            // echo "<script type='text/javascript'>";
+            // echo "window.location = 'index.php'; ";
+            // echo "</script>";
+    
+            echo '<script>
+                setTimeout(function() {
+                    swal({
+                        title: "ข้อมูลซ้ำ!",
+                        text: "กรุณาเพิ่มใหม่อีกครั้ง!",
+                        type: "Danger",
+                        timer: 2000,
+                        showConfirmButton: false
+                    }, function() {
+                        window.history.back();
+                    });
+                });
+            </script>';
+        }
     }
-    mysqli_close($conn);
-    if ($result) {
-        echo "<script type='text/javascript'>";
-        echo "alert('เพิ่มข้อมูลสำเร็จ');";
-        echo "window.location = 'index.php'; ";
-        echo "</script>";
-    } else {
-        echo "<script type='text/javascript'>";
-        echo "window.location = 'index.php'; ";
-        echo "</script>";
-    }
+    // mysqli_close($conn);
+    
     // Close connection
     CloseCon($conn);
     ?>

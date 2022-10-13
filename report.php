@@ -25,17 +25,17 @@
         $(function() {
             $("#autocompleteA").autocomplete({
                 source: "autocompleteA.php",
-                minLength: 2,
+                minLength: 1,
                 select: function(event, ui) {}
             });
             $("#autocompleteB").autocomplete({
                 source: 'autocompleteB.php',
-                minLength: 2,
+                minLength: 1,
                 select: function(event, ui) {}
             });
             $("#autocompleteC").autocomplete({
                 source: 'autocompleteC.php',
-                minLength: 2,
+                minLength: 1,
                 select: function(event, ui) {}
             });
         });
