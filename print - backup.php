@@ -260,53 +260,53 @@
                             $counts = 0;
                             // echo "<h3 class='center'>รายชื่อ " . $_REQUEST["id"] . "</h3>";
                             echo "<h3 class='center'>รายการข้อมูลชุมชน ".$prints."</h3>";
-
-
-                    //หา A
-                    $qa = "SELECT vocal_name_1,nPhone FROM data WHERE community='$prints' GROUP BY vocal_name_1 ORDER BY vocal_name_1 ASC";
-                    //echo $qa;
-                    $res_a = mysqli_query($conn,$qa);
-                    $i=0;
-                    echo "<div class='card-body'><ol><u><h6 class='text-primary'>ทีมแกน A</h6></u>";
-                    while($a=mysqli_fetch_array($res_a)){
-                    $i++;
-                    echo "<table width='100%'><tr><td width='280'><li>".$a['vocal_name_1']. "</li></td><td width='500'>" .$a['nPhone']."</td></tr></table>";
-
-                        //หา B
-                        $qb = "SELECT vocal_name_2, nPhone FROM data WHERE vocal_name_1='$a[vocal_name_1]' AND  vocal_name_2 <> '' 
-                                GROUP BY vocal_name_2 ORDER BY vocal_name_2"; //echo $qb;
-                        $res_b = mysqli_query($conn, $qb);
-                        $count_b = mysqli_num_rows($res_b);                            
-                            if($count_b>0){
-                                echo "<u><h6 class='text-info'>ทีมแกน B</h6></u>";
-                            }
-                            echo "<ol>";
-                        while($b = mysqli_fetch_array($res_b)){
-                            //echo "<li>".$b['vocal_name_2']. " &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" .$b['nPhone']."</li>";
-                            echo "<table width='100%'><tr><td width='248'><li>".$b['vocal_name_2']. "</li></td><td width='500'>" .$b['nPhone']."</td></tr></table>";
+                            echo "<table id='myTable' class='table table-bordered landscape '>";
+                            echo "<thead>";
+                            echo "<tr class='table-active  landscape'>";
+                            echo "<th class='center' scope='col'>ลำดับ</th>";
+                            //echo "<th class='center' scope='col'>ชุมชน/เขต</th>";
+                            //echo "<th class='center' scope='col'>แกนนำ A</th>";
+                            //echo "<th class='center' scope='col'>แกนนำ B</th>";
+                            //echo "<th class='center' scope='col'>แกนนำ C</th>";
+                            //echo "<th class='center' scope='col'>คำนำหน้า</th>";
+                            //echo "<th class='center' scope='col'>ชื่อ</th>";
+                            //echo "<th class='center' scope='col'>สกุล</th>";
                             
-                            //หา C
-                            $qc = "SELECT vocal_name_3,nPhone FROM data WHERE vocal_name_2='$b[vocal_name_2]' AND  vocal_name_3 <> '' 
-                            GROUP BY vocal_name_3 ORDER BY vocal_name_3"; //echo $qc;
-                            $res_c = mysqli_query($conn, $qc);
-                            $count_c = mysqli_num_rows($res_c); 
-                            if($count_c>0){
-                                echo "<u><h6 class='text-success'>ทีมแกน C</h6></u>";
+                            // echo "<th class='center' scope='col'>วันเดือนปีเกิด</th>";
+                            // echo "<th class='center' scope='col'>ที่อยู่</th>";
+                            echo "<th class='center' scope='col'>เบอร์โทร</th>";
+                            
+
+                            echo "</tr>";
+                            echo "</thead>";
+
+
+                            while ($row = mysqli_fetch_array($result)) {
+                                $counts++;
+                                // $names = $row['community'];
+                                if ($row['hNumber'] == null) {
+                                    $adress = '';
+                                } else {
+                                    $adress = "บ้านเลขที่ " . $row['hNumber'] . " หมู่ " . $row['moo'] . " ต." . $row['parish'] . " อ." . $row['district'] . " จ." . $row['province'] . " " . $row['zip'];
+                                }
+                                // echo "<h3 class='center'>รายชื่อ" . $names . "</h3>";
+                                echo "<tr class='landscape'>";
+                                echo "<td align='center'>" . $counts . "</td>";
+                                //echo "<td>" . $row['community'] . "</td>";
+                                echo "<td>" . $row['vocal_name_1'] . "</td>";
+                                echo "<td>" . $row['vocal_name_2'] . "</td>";
+                                echo "<td>" . $row['vocal_name_3'] . "</td>";
+                                //echo "<td>" . $row['prefix'] . "</td>";
+                                //echo "<td>" . $row['name'] . "</td>";
+                                //echo "<td>" . $row['surname'] . "</td>";
+                                
+                                // echo "<td>" . $row['birthday'] . "</td>";
+                                // echo "<td>" . $adress . "</td>";
+                                echo "<td>" . $row['nPhone'] . "</td>";
+                                
+                                echo "</tr>";
                             }
-                                echo "<ol>";
-                            while($c = mysqli_fetch_array($res_c)){
-                                //echo "<li>".$c['vocal_name_3']. " &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" .$c['nPhone']."</li>";
-                                echo "<table width='100%'><tr><td width='215'><li>".$c['vocal_name_3']. "</li></td><td width='500'>" .$c['nPhone']."</td></tr></table>";    
-                            }
-                                echo "</ol>";
-
-
-                        }
-                            echo "</ol>";
-
-                    }
-
-
+                            echo "</table>";
                             mysqli_free_result($result);
                         } else {
                             echo "No records matching your query were found.";
@@ -708,59 +708,103 @@
                 $sql = "SELECT community FROM `data` GROUP by community order by community ";
                 if ($result = mysqli_query($conn, $sql)) {
                     if (mysqli_num_rows($result) > 0) {
-                //หาชุมชนทั้งหมด
-                $sql = "SELECT DISTINCT community FROM `data` GROUP by community order by community ";
-                $result_ = mysqli_query($conn,$sql);
-                $count_i = mysqli_num_rows($result);
-                echo "<h3 class='center'>รายงานข้อมูลทั้งหมด ".$count_i." ชุมชน รวมจำนวน ".number_format($count_n['c_i'],0)." ราย</h3><hr/>";
-                while($row=mysqli_fetch_array($result_)){
-                    echo "<h3>".$row['community']. "</h3>";
-                    echo "<hr>";
+                        $count_i = mysqli_num_rows($result);
+                        $names = '';
+                        $counts = 0;
+                        // echo "<h3 class='center'>รายชื่อ " . $prints . "</h3>";
+                        echo "<h3 class='center'>รายงานข้อมูลทั้งหมด ".$count_i." ชุมชน รวมจำนวน ".number_format($count_n['c_i'],0)." ราย</h3>";
+                        echo "<table id='myTable' class='table table-bordered'>";
+                        echo "<thead>";
+                        echo "<tr class='table-active landscape'>";
+                        echo "<th class='center' scope='col'>ลำดับ</th>";
+                        echo "<th class='center' scope='col'>ชุมชน/เขต</th>";
+                        echo "<th class='center' scope='col'>รายละเอียด</th>";
+                        /*
+                        echo "<th class='center' scope='col'>แกนนำ A</th>";
+                        echo "<th class='center' scope='col'>แกนนำ B</th>";
+                        echo "<th class='center' scope='col'>แกนนำ C</th>";
+                        echo "<th class='center' scope='col'>คำนำหน้า</th>";
+                        
+                        echo "<th class='center' scope='col'>สกุล</th>";
+                        echo "<th class='center' scope='col'>วันเดือนปีเกิด</th>";
+                        echo "<th class='center' scope='col'>ที่อยู่</th>";
+                        echo "<th class='center' scope='col'>เบอร์โทร</th>";
+                        */
+                        echo "</tr>";
+                        echo "</thead>";
+                        while ($row = mysqli_fetch_array($result)) {
+                            $counts++;
+                            $names = $row['community'];
+                            /*
+                            if ($row['hNumber'] == null) {
+                                $adress = '';
+                            } else {
+                                $adress = "บ้านเลขที่ " . $row['hNumber'] . " หมู่ " . $row['moo'] . " ต." . $row['parish'] . " อ." . $row['district'] . " จ." . $row['province'] . " " . $row['zip'];
+                            }*/
+                            // echo "<h3 class='center'>รายชื่อ" . $names . "</h3>";
+                            echo "<tr class='landscape'>";
+                            echo "<td align='center'>" . $counts . "</td>";
+                            echo "<td>" . $row['community'] . "</td>";
+                            echo "<td>";
+                            //$q = "SELECT * FROM data WHERE community='$row[community]'  ";
+                            $q = "SELECT * FROM data WHERE community='$row[community]' GROUP BY vocal_name_1 ORDER BY vocal_name_1 ASC ";
+                            //echo $q;
+                            $res = mysqli_query($conn, $q);
+                            echo "<table class='table table-hover'>";
+                            echo "<tr class='bg-light'>";
+                            echo "<td width='15%' align='center'> แกน A </td>";
+                            echo "<td width='15%' align='center'> แกน B </td>";
+                            echo "<td width='15%' align='center'> แกน C </td>";
+                            //  echo "<td width='20%' align='center'>แกนนำ A</td>";
+                            // echo "<td width='20%' align='center'>แกนนำ B</td>";
+                            // echo "<td width='20%' align='center'>แกนนำ C</td>";
+                            echo "</tr>";
+                            $i=0;
+                            while($array = mysqli_fetch_array($res)){
+                            $i++;
 
-                    //หา A
-                    $qa = "SELECT vocal_name_1,nPhone FROM data WHERE community='$row[community]' GROUP BY vocal_name_1 ORDER BY vocal_name_1 ASC";
-                    $res_a = mysqli_query($conn,$qa);
-                    $i=0;
-                    echo "<div class='card-body'><ol><u><h6 class='text-primary'>ทีมแกน A</h6></u>";
-                    while($a=mysqli_fetch_array($res_a)){
-                    $i++;
-                        echo "<table width='100%'><tr><td width='280'><li>".$a['vocal_name_1']. "</li></td><td width='500'>" .$a['nPhone']."</td></tr></table>";
+                                echo "<tr>";
+                                echo "<td>";
+                                echo $i.". ".$array['vocal_name_1']."<br />";
+                                echo "</td>";
 
-                        //หา B
-                        $qb = "SELECT vocal_name_2,nPhone FROM data WHERE vocal_name_1='$a[vocal_name_1]' AND  vocal_name_2 <> '' 
+                                echo "<td>";
+                                $qb = "SELECT vocal_name_2 FROM data WHERE vocal_name_1='$array[vocal_name_1]' AND vocal_name_2<>'' 
                                 GROUP BY vocal_name_2 ORDER BY vocal_name_2"; //echo $qb;
-                        $res_b = mysqli_query($conn, $qb);
-                        $count_b = mysqli_num_rows($res_b);                            
-                            if($count_b>0){
-                                echo "<br><u><h6 class='text-info'>ทีมแกน B</h6></u>";
+                                $res_b = mysqli_query($conn, $qb);
+                                while($rowb = mysqli_fetch_array($res_b)){
+                                    echo $rowb['vocal_name_2']."<br />";
+                                }
+                                echo "</td>";
+
+                                echo "<td>";
+                                
+                                //$qc = "SELECT DISTINCT vocal_name_3 FROM `data` WHERE community ='$array[community]' AND vocal_name_2<>'' AND vocal_name_3<>'' ";
+                                $qc = "SELECT vocal_name_3 FROM `data` WHERE community ='$array[community]' AND vocal_name_1='$array[vocal_name_1]' 
+                                AND vocal_name_2<>'$array[vocal_name_2]' AND vocal_name_3<>'' ORDER BY vocal_name_3 ";
+                                //echo $qc;
+                                $res_c = mysqli_query($conn,$qc);
+                                while($rowc = mysqli_fetch_array($res_c)){
+                                    echo $rowc['vocal_name_3']."<br />";
+                                }
+                                
+                                echo "</td>";
+                               // echo "<td>".$array['vocal_name_1']."</td>";
+                               // echo "<td>".$array['vocal_name_2']."</td>";
+                               // echo "<td>".$array['vocal_name_3']."</td>";
+                                echo "</tr>";
+                                
                             }
-                            echo "<ol>";
-                        while($b = mysqli_fetch_array($res_b)){
-                            echo "<table width='100%'><tr><td width='248'><li>".$b['vocal_name_2']. "</li></td><td width='500'>" .$b['nPhone']."</td></tr></table>";
+                            echo "</table>";
+                            echo "</td>";
+                            // echo "<td>" . $row['birthday'] . "</td>";
+                            // echo "<td>" . $adress . "</td>";
+                            //echo "<td>" . $row['nPhone'] . "</td>";
                             
-                            //หา C
-                            $qc = "SELECT vocal_name_3,nPhone FROM data WHERE vocal_name_2='$b[vocal_name_2]' AND  vocal_name_3 <> '' 
-                            GROUP BY vocal_name_3 ORDER BY vocal_name_3"; //echo $qc;
-                            $res_c = mysqli_query($conn, $qc);
-                            $count_c = mysqli_num_rows($res_c); 
-                            if($count_c>0){
-                                echo "<br><u><h6 class='text-success'>ทีมแกน C</h6></u>";
-                            }
-                                echo "<ol>";
-                            while($c = mysqli_fetch_array($res_c)){
-                                echo "<table width='100%'><tr><td width='215'><li>".$c['vocal_name_3']. "</li></td><td width='500'>" .$c['nPhone']."</td></tr></table>";    
-                            }
-                                echo "</ol>";
-
-
+                            echo "</tr>";
                         }
-                            echo "</ol>";
-
-
-                    }
-                    echo "</ol></div><hr>";
-
-                    }
+                        echo "</table>";
+                        mysqli_free_result($result);
                     } else {
                         echo "ไม่มีข้อมูลใน DATABASE";
                         // echo "No records matching your query were found.";

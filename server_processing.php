@@ -97,7 +97,7 @@ if (isset($_POST['start'])) {
         'vocal_name_2' => $row['vocal_name_2'],
         'vocal_id_3' => $row['vocal_id_3'],
         'vocal_name_3' => $row['vocal_name_3'],
-        'Action' => "<a href='edit.php?id=$row[$ID]' type='button' class='btn btn-primary'>แก้ไข</a>",
+        'Action' => "<a href='edit.php?id=$row[$ID]' type='button' class='btn btn-primary'>แก้ไข</a> <a href='delete.php?id=$row[$ID]' type='button' class='btn btn-danger'>ลบ</a>",
       );
     }
   }

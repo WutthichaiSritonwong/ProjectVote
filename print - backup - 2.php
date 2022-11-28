@@ -270,7 +270,7 @@
                     echo "<div class='card-body'><ol><u><h6 class='text-primary'>ทีมแกน A</h6></u>";
                     while($a=mysqli_fetch_array($res_a)){
                     $i++;
-                    echo "<table width='100%'><tr><td width='280'><li>".$a['vocal_name_1']. "</li></td><td width='500'>" .$a['nPhone']."</td></tr></table>";
+                        echo "<li>".$a['vocal_name_1']. " &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" .$a['nPhone']."</li>";
 
                         //หา B
                         $qb = "SELECT vocal_name_2, nPhone FROM data WHERE vocal_name_1='$a[vocal_name_1]' AND  vocal_name_2 <> '' 
@@ -282,8 +282,7 @@
                             }
                             echo "<ol>";
                         while($b = mysqli_fetch_array($res_b)){
-                            //echo "<li>".$b['vocal_name_2']. " &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" .$b['nPhone']."</li>";
-                            echo "<table width='100%'><tr><td width='248'><li>".$b['vocal_name_2']. "</li></td><td width='500'>" .$b['nPhone']."</td></tr></table>";
+                            echo "<li>".$b['vocal_name_2']. " &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" .$b['nPhone']."</li>";
                             
                             //หา C
                             $qc = "SELECT vocal_name_3,nPhone FROM data WHERE vocal_name_2='$b[vocal_name_2]' AND  vocal_name_3 <> '' 
@@ -295,8 +294,7 @@
                             }
                                 echo "<ol>";
                             while($c = mysqli_fetch_array($res_c)){
-                                //echo "<li>".$c['vocal_name_3']. " &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" .$c['nPhone']."</li>";
-                                echo "<table width='100%'><tr><td width='215'><li>".$c['vocal_name_3']. "</li></td><td width='500'>" .$c['nPhone']."</td></tr></table>";    
+                                echo "<li>".$c['vocal_name_3']. " &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" .$c['nPhone']."</li>";
                             }
                                 echo "</ol>";
 
@@ -724,7 +722,7 @@
                     echo "<div class='card-body'><ol><u><h6 class='text-primary'>ทีมแกน A</h6></u>";
                     while($a=mysqli_fetch_array($res_a)){
                     $i++;
-                        echo "<table width='100%'><tr><td width='280'><li>".$a['vocal_name_1']. "</li></td><td width='500'>" .$a['nPhone']."</td></tr></table>";
+                        echo "<li>".$a['vocal_name_1']. " &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" .$a['nPhone']."</li>";
 
                         //หา B
                         $qb = "SELECT vocal_name_2,nPhone FROM data WHERE vocal_name_1='$a[vocal_name_1]' AND  vocal_name_2 <> '' 
@@ -732,11 +730,11 @@
                         $res_b = mysqli_query($conn, $qb);
                         $count_b = mysqli_num_rows($res_b);                            
                             if($count_b>0){
-                                echo "<br><u><h6 class='text-info'>ทีมแกน B</h6></u>";
+                                echo "<u><h6 class='text-info'>ทีมแกน B</h6></u>";
                             }
                             echo "<ol>";
                         while($b = mysqli_fetch_array($res_b)){
-                            echo "<table width='100%'><tr><td width='248'><li>".$b['vocal_name_2']. "</li></td><td width='500'>" .$b['nPhone']."</td></tr></table>";
+                            echo "<li>".$b['vocal_name_2']. " &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" .$b['nPhone']."</li>";
                             
                             //หา C
                             $qc = "SELECT vocal_name_3,nPhone FROM data WHERE vocal_name_2='$b[vocal_name_2]' AND  vocal_name_3 <> '' 
@@ -744,11 +742,11 @@
                             $res_c = mysqli_query($conn, $qc);
                             $count_c = mysqli_num_rows($res_c); 
                             if($count_c>0){
-                                echo "<br><u><h6 class='text-success'>ทีมแกน C</h6></u>";
+                                echo "<u><h6 class='text-success'>ทีมแกน C</h6></u>";
                             }
                                 echo "<ol>";
                             while($c = mysqli_fetch_array($res_c)){
-                                echo "<table width='100%'><tr><td width='215'><li>".$c['vocal_name_3']. "</li></td><td width='500'>" .$c['nPhone']."</td></tr></table>";    
+                                echo "<li>".$c['vocal_name_3']. " &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" .$c['nPhone']."</li>";    
                             }
                                 echo "</ol>";
 
