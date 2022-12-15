@@ -50,7 +50,7 @@ CREATE TABLE `data` (
   `vocal_name_2` varchar(200) NOT NULL,
   `vocal_id_3` varchar(100) NOT NULL,
   `vocal_name_3` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `data`

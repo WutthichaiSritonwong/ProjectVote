@@ -2,6 +2,7 @@
 include 'connect.php';
 $conn = OpenCon();
 function products($conn , $term){   
+    // $query = "SELECT DISTINCT community FROM `data`WHERE community LIKE '%".$term."%' ORDER BY vocal_name_3 ASC";
     $query = "SELECT DISTINCT vocal_name_3 FROM `data`WHERE vocal_name_3 LIKE '%".$term."%' ORDER BY vocal_name_3 ASC";
     $result = mysqli_query($conn, $query);  
     $data = mysqli_fetch_all($result,MYSQLI_ASSOC);

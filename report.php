@@ -155,7 +155,7 @@
         <div class="">
             <h3>สร้างรายงานตามแกนนำ A</h3>
             <form class="" action="print.php" method="post">
-                <input type="text" autocomplete="off" name="prints" id="autocompleteA" placeholder="ชื่อแกนนำ" class="form-control form-group mx-sm-3 mb-2" style='width: 50%;'>
+                <input type="text" autocomplete="off" name="prints" id="autocompleteA" placeholder="ชื่อชุมชนแกนนำ A" class="form-control form-group mx-sm-3 mb-2" style='width: 50%;'>
                 <input type="hidden" id="id" name="id" value="A">
                 <?php
                 // if ($result = mysqli_query($conn, $sql)) {
@@ -205,7 +205,7 @@
         <h3>สร้างรายงานตามแกนนำ B</h3>
         <div class="">
             <form class="" action="print.php" method="post">
-                <input type="text" autocomplete="off" name="prints" id="autocompleteB" placeholder="ชื่อแกนนำ" class="form-control form-group mx-sm-3 mb-2" style='width: 50%;'>
+                <input type="text" autocomplete="off" name="prints" id="autocompleteB" placeholder="ชื่อชุมชนแกนนำ B" class="form-control form-group mx-sm-3 mb-2" style='width: 50%;'>
                 <input type="hidden" id="id" name="id" value="B">
                 <?php
                 // $conn = mysqli_connect("localhost", "root", "", "db_vote");
@@ -241,7 +241,7 @@
         <h3>สร้างรายงานตามแกนนำ C</h3>
         <div class="">
             <form class="" action="print.php" method="post">
-            <input type="text" autocomplete="off" name="prints" id="autocompleteC" placeholder="ชื่อแกนนำ" class="form-control form-group mx-sm-3 mb-2" style='width: 50%;'>
+            <input type="text" autocomplete="off" name="prints" id="autocompleteC" placeholder="ชื่อชุมชนแกนนำ C" class="form-control form-group mx-sm-3 mb-2" style='width: 50%;'>
                 <input type="hidden" id="id" name="id" value="C">
                 <?php
                 // $conn = mysqli_connect("localhost", "root", "", "db_vote");

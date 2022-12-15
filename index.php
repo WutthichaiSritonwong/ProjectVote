@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>โปรแกรมเลือกตั้ง</title>
+    <title>โปรแกรมสมาชิก</title>
     <link rel="stylesheet" href="css\bootstrap.min.css" />
     <link rel="stylesheet" href="css\style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +16,13 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- jQuery UI library -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 </head>
 
 <body>
@@ -141,7 +148,7 @@
                         <small class="text-muted">*กรอกรหัสของแกนนำ A</small>
                     </div>
                     <div class="col-md-9 mb-3">
-                        <input type="text" class="form-control" id="leader_id" name="vocal_name_1" placeholder="ชื่อแกนนำ" required="">
+                        <input type="text" class="form-control" id="leader_A" name="vocal_name_1" placeholder="ชื่อแกนนำ" required="">
                         <small class="text-muted">*กรอกชื่อของแกนนำ A</small>
                     </div>
                 </div>
@@ -151,7 +158,7 @@
                         <small class="text-muted">*กรอกรหัสของแกนนำ B</small>
                     </div>
                     <div class="col-md-9 mb-3">
-                        <input type="text" class="form-control" id="leader_id" name="vocal_name_2" placeholder="ชื่อแกนนำ">
+                        <input type="text" class="form-control" id="leader_B" name="vocal_name_2" placeholder="ชื่อแกนนำ">
                         <small class="text-muted">*กรอกชื่อของแกนนำ B</small>
                     </div>
                 </div>
@@ -161,7 +168,7 @@
                         <small class="text-muted">*กรอกรหัสของแกนนำ C</small>
                     </div>
                     <div class="col-md-9 mb-3">
-                        <input type="text" class="form-control" id="leader_id" name="vocal_name_3" placeholder="ชื่อแกนนำ">
+                        <input type="text" class="form-control" id="leader_C" name="vocal_name_3" placeholder="ชื่อแกนนำ">
                         <small class="text-muted">*กรอกชื่อของแกนนำ C</small>
                     </div>
                 </div>
@@ -196,6 +203,27 @@
         window.location = 'print.php';
         window.location = 'showdata.php';
     }
+
+</script>
+<script type="text/javascript">
+    $(function() {
+        $("#leader_A").autocomplete({
+               source: 'autocompleteA.php',
+            //    minLength: 3
+        });
+    });
+    $(function() {
+        $("#leader_B").autocomplete({
+               source: 'autocompleteB.php',
+            //    minLength: 3
+        });
+    });
+    $(function() {
+        $("#leader_C").autocomplete({
+               source: 'autocompleteC.php',
+            //    minLength: 3
+        });
+    });
 </script>
 
 </html>
